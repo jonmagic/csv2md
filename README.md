@@ -1,4 +1,16 @@
-# CSV to Markdown Table Converter
+# CSV to GitHub Flavored Markdown Table Converter
+
+Convert [csv formatted data](http://en.wikipedia.org/wiki/Comma-separated_values) to a [GitHub Flavored Markdown table](https://help.github.com/articles/github-flavored-markdown/#tables).
+
+## Installation
+
+```bash
+$ gem install csv2md
+Successfully installed csv2md-1.0.0
+1 gem installed
+```
+
+## Usage
 
 ```bash
 $ cat foo.csv
