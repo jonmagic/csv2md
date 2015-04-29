@@ -1,0 +1,18 @@
+#!/usr/bin/env ruby
+
+require "csv2md"
+
+csv = (STDIN.tty?) ? nil : $stdin.read
+gfm = ""
+
+if csv
+  gfm = Csv2md.convert_csv_to_gfm(csv)
+else
+  while file_path = ARGV.shift
+    csv = File.read(file_path)
+    gfm += Csv2md.convert_csv_to_gfm(csv)
+    gfm += "\n" if ARGV.length > 0
+  end
+end
+
+puts gfm
