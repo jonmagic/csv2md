@@ -7,6 +7,14 @@ class Csv2mdTest < Minitest::Test
     assert_equal [12, 5, 14], subject.find_column_widths
   end
 
+  def test_find_column_widths_raises_error_with_malformed_data
+    csv = File.read(fixture_path_helper("malformed.csv"))
+    subject = Csv2md.new(csv: csv)
+    assert_raises(Csv2md::UnableToParseCsv) do
+      subject.find_column_widths
+    end
+  end
+
   def test_gfm_returns_csv_converted_to_pretty_gfm_table
     csv = File.read(fixture_path_helper("sample.csv"))
     expected = File.read(fixture_path_helper("sample.md"))

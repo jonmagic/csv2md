@@ -1,6 +1,7 @@
 require "csv"
 
 class Csv2md
+  class UnableToParseCsv < StandardError; end
 
   # Public: Public interface to Csv2md converter.
   #
@@ -27,6 +28,8 @@ class Csv2md
 
       result
     end
+  rescue
+    raise UnableToParseCsv
   end
 
   def parsed_csv
