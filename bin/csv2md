@@ -5,6 +5,16 @@ require "csv2md"
 input = (STDIN.tty?) ? nil : $stdin.read
 gfm = ""
 
+if !input && ARGV.length == 0
+  message  = "Usage: csv2md [options] results.csv\n"
+  message += "       cat results.csv | csv2md [options]\n\n"
+  message += "Options:\n"
+  message += "    -r Reverses conversation, takes a GitHub Flavored\n"
+  message += "       Markdown table as input and outputs csv."
+  puts message
+  exit
+end
+
 begin
   output_format = if ARGV[0] == "-r"
     ARGV.shift
