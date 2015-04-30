@@ -9,7 +9,7 @@ class Csv2mdTest < Minitest::Test
 
   def test_gfm_returns_csv_converted_to_pretty_gfm_table
     csv = File.read(fixture_path_helper("sample.csv"))
-    expected = File.read(fixture_path_helper("sample.gfm"))
+    expected = File.read(fixture_path_helper("sample.md"))
     subject = Csv2md.new(csv: csv)
     assert_equal expected, subject.gfm
   end
