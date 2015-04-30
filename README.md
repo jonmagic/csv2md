@@ -13,6 +13,14 @@ Successfully installed csv2md-1.0.0
 ## Usage
 
 ```bash
+$ csv2md
+Usage: csv2md [options] results.csv
+       cat results.csv | csv2md [options]
+
+Options:
+    -r Reverses conversation, takes a GitHub Flavored
+       Markdown table as input and outputs csv.
+
 $ cat foo.csv
 Name,Title,Email Address
 Jane Atler,CEO,jane@acme.com
@@ -26,12 +34,22 @@ $ csv2md foo.csv
 | John Doherty | CTO   | john@acme.com  |
 | Sally Smith  | CFO   | sally@acme.com |
 
-$ pbpaste | csv2md
+$ cat foo.csv | csv2md
 | Name         | Title | Email Address  |
 |--------------|-------|----------------|
 | Jane Atler   | CEO   | jane@acme.com  |
 | John Doherty | CTO   | john@acme.com  |
 | Sally Smith  | CFO   | sally@acme.com |
+```
+
+It supports one option right now, `-r`:
+
+```bash
+$ cat foo.csv | csv2md | csv2md -r
+Name,Title,Email Address
+Jane Atler,CEO,jane@acme.com
+John Doherty,CTO,john@acme.com
+Sally Smith,CFO,sally@acme.com
 ```
 
 ## License
