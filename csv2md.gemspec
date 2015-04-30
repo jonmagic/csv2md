@@ -1,6 +1,6 @@
 Gem::Specification.new do |spec|
   spec.name        = "csv2md"
-  spec.version     = "1.0.0"
+  spec.version     = "1.1.0"
   spec.date        = "2015-04-29"
   spec.summary     = "Convert csv into a GitHub Flavored Markdown table"
   spec.description = "Convert csv into a GitHub Flavored Markdown table"
