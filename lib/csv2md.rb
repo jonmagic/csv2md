@@ -3,20 +3,11 @@ require "csv"
 class Csv2md
   class UnableToParseCsv < StandardError; end
 
-  # Public: Public interface to Csv2md converter.
-  #
-  # csv - String csv formatted data.
-  #
-  # Returns a String.
-  def self.convert_csv_to_gfm(csv)
-    new(csv: csv).gfm
+  def initialize(input: nil)
+    @input = input
   end
 
-  def initialize(csv:)
-    @csv = csv
-  end
-
-  attr_reader :csv
+  attr_reader :input
 
   def find_column_widths
     parsed_csv.inject(Array.new(parsed_csv[0].length, 0)) do |result, line|
@@ -30,10 +21,6 @@ class Csv2md
     end
   rescue
     raise UnableToParseCsv
-  end
-
-  def parsed_csv
-    @parsed_csv ||= CSV.parse(csv)
   end
 
   def gfm
@@ -59,5 +46,20 @@ class Csv2md
     end
 
     result
+  end
+
+  def csv
+    result = input.split("\n").map do |line|
+      row = line.scan(/\|([^\|]+)\s/).flatten.map(&:strip).join(",")
+      row unless row.strip == ""
+    end.compact.join("\n")
+    result += "\n"
+    result
+  end
+
+  private
+
+  def parsed_csv
+    @parsed_csv ||= CSV.parse(input)
   end
 end

@@ -2,16 +2,25 @@
 
 require "csv2md"
 
-csv = (STDIN.tty?) ? nil : $stdin.read
+input = (STDIN.tty?) ? nil : $stdin.read
 gfm = ""
 
 begin
-  if csv
-    gfm = Csv2md.convert_csv_to_gfm(csv)
+  output_format = if ARGV[0] == "-r"
+    ARGV.shift
+    :csv
+  else
+    :gfm
+  end
+
+  if input
+    csv2md = Csv2md.new(input: input)
+    gfm = csv2md.send(output_format)
   else
     while file_path = ARGV.shift
-      csv = File.read(file_path)
-      gfm += Csv2md.convert_csv_to_gfm(csv)
+      input = File.read(file_path)
+      csv2md = Csv2md.new(input: input)
+      gfm += csv2md.send(output_format)
       gfm += "\n" if ARGV.length > 0
     end
   end
