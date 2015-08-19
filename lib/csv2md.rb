@@ -3,7 +3,7 @@ require "csv"
 class Csv2md
   class UnableToParseCsv < StandardError; end
 
-  def initialize(input: nil)
+  def initialize(input)
     @input = input
   end
 
