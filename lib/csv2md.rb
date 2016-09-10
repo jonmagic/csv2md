@@ -27,7 +27,6 @@ class Csv2md
     result = ""
     widths = find_column_widths
     number_of_columns = widths.length
-    total_width = widths.inject(0) {|sum, n| sum += n } + widths.length * 2
 
     parsed_csv.each_with_index do |line, row_index|
       line.each_with_index do |column, column_index|
