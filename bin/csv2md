@@ -24,7 +24,7 @@ begin
   end
 
   if input
-    csv2md = Csv2md.new(input: input)
+    csv2md = Csv2md.new(input)
     gfm = csv2md.send(output_format)
   else
     while file_path = ARGV.shift
