@@ -49,7 +49,7 @@ class Csv2md
 
   def csv
     result = input.split("\n").map do |line|
-      row = line.scan(/\|([^\|]+)\s/).flatten.map(&:strip).join(",")
+      row = line.scan(/\|([^\|]*)\s/).flatten.map(&:strip).join(",")
       row unless row.strip == ""
     end.compact.join("\n")
     result += "\n"
