@@ -52,6 +52,11 @@ John Doherty,CTO,john@acme.com
 Sally Smith,CFO,sally@acme.com
 ```
 
+## Contributors
+
+* [Jonathan Hoyt](https://github.com/jonmagic)
+* [Jiri Nemecek](https://github.com/geronime)
+
 ## License
 
 The MIT License (MIT)
