@@ -12,7 +12,7 @@ class Csv2md
   def find_column_widths
     parsed_csv.inject(Array.new(parsed_csv[0].length, 0)) do |result, line|
       line.each_with_index do |column, i|
-        if column.length > result[i]
+        if column.to_s.length > result[i]
           result[i] = column.length
         end
       end
@@ -31,7 +31,7 @@ class Csv2md
     parsed_csv.each_with_index do |line, row_index|
       line.each_with_index do |column, column_index|
         result += "| "
-        result += column.ljust(widths[column_index] + 1, " ")
+        result += column.to_s.ljust(widths[column_index] + 1, " ")
         if column_index == number_of_columns - 1
           result += "|\n"
         end
@@ -49,7 +49,7 @@ class Csv2md
 
   def csv
     result = input.split("\n").map do |line|
-      row = line.scan(/\|([^\|]+)\s/).flatten.map(&:strip).join(",")
+      row = line.scan(/\|([^\|]*)\s/).flatten.map(&:strip).join(",")
       row unless row.strip == ""
     end.compact.join("\n")
     result += "\n"

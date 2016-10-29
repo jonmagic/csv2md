@@ -29,7 +29,7 @@ begin
   else
     while file_path = ARGV.shift
       input = File.read(file_path)
-      csv2md = Csv2md.new(input: input)
+      csv2md = Csv2md.new(input)
       gfm += csv2md.send(output_format)
       gfm += "\n" if ARGV.length > 0
     end
