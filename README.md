@@ -18,7 +18,7 @@ Usage: csv2md [options] results.csv
        cat results.csv | csv2md [options]
 
 Options:
-    -r Reverses conversation, takes a GitHub Flavored
+    -r Reverses conversion, takes a GitHub Flavored
        Markdown table as input and outputs csv.
 
 $ cat foo.csv
