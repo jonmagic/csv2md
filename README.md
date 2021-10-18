@@ -56,6 +56,7 @@ Sally Smith,CFO,sally@acme.com
 
 * [Jonathan Hoyt](https://github.com/jonmagic)
 * [Jiri Nemecek](https://github.com/geronime)
+* [Will Fitzgerald](https://github.com/willf)
 
 ## License
 
